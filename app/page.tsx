@@ -10,15 +10,13 @@ import ItemsSettings from '@/sections/ItemsSettings'
 import TitleSection from '@/sections/TitleSection';
 import CodeArea from '@/sections/CodeArea';
 import LayoutArea from '@/sections/LayoutArea';
+import FooteSection from '@/sections/FooteSection'
 
 const Home = () => {
-  const {grid, updateGrid, items, updateItem, addItem, deleteItem, decorated, rounded, isTailwind} = useGlobalStore()
+  const {grid, updateGrid, items, updateItem, addItem, deleteItem, decorated, rounded, isTailwind, cssCode, setCssCode, tailwindCode, setTailwindCode} = useGlobalStore()
   const colors: any = lightColors.items
   const [iFrameCode, setIFrameCode] = useState<string>('')
-  const [htmlCode, setHtmlCode] = useState<string>('')
-  const [tailwindCode, setTailwindCode] = useState<string>('')
-
-  const codeHtmlArea = isTailwind ? tailwindCode : htmlCode
+  const codeHtmlArea = isTailwind ? tailwindCode : cssCode
 
   useEffect(() => {
     const iFrameHtml: string = items.map((item) => {
@@ -38,7 +36,7 @@ const Home = () => {
     const IFrameCode = createIframeHtml(grid, iFrameHtml)
     setIFrameCode(IFrameCode)
 
-    const html: string = items.map((item) => {
+    const css: string = items.map((item) => {
       const stringIndex = (item.id - 1).toString()
       const bgColor = decorated ? colors[stringIndex].backgroundColor+";" : "lightGray;"
       const text = decorated ? `<p>${colors[stringIndex].text}</p>` : ""
@@ -53,8 +51,8 @@ const Home = () => {
       `
     }).join('')
 
-    const htmlCode = createHTML(grid, html)
-    setHtmlCode(htmlCode)
+    const cssCode = createHTML(grid, css)
+    setCssCode(cssCode)
 
     const tailwind: string = items.map((item) => {
       const stringIndex = (item.id - 1).toString()
@@ -83,9 +81,11 @@ const Home = () => {
   return (
     <div className='flex h-screen w-full text-black font-mplus p-8'>
 
-      <div className='flex flex-col h-full w-1/2 bg-emerald-50 gap-6'>
+      <div className='flex flex-col h-full w-1/2 gap-6'>
           <TitleSection />
           <GridSettings />
+          <ItemsSettings />
+          <FooteSection />
       </div>
 
       <div className='flex flex-col h-full w-1/2 gap-4'>
@@ -96,37 +96,6 @@ const Home = () => {
           <CodeArea htmlCode={codeHtmlArea}/>
         </div>
       </div>
-
-
-
-
-
-
-
-
-      {/* <div className='flex flex-col w-5/12 h-full'>
-        <div className='flex flex-col h-2/3 gap-4'>
-          
-          <GridSettings />
-          
-          <ItemsSettings />
-
-        </div>
-
-
-        <div className='flex h-1/3 px-8 py-4'>
-          <div id="html" className='bg-neutral-600 w-full h-full rounded-lg shadow-lg shadow-neutral-800 border border-neutral-900 overflow-auto text-xs'>
-            <SyntaxHighlighter language="javascript" style={docco}>
-              {htmlCode}
-            </SyntaxHighlighter>
-          </div>
-        </div>
-      </div>
-
-      <div className='flex flex-col w-7/12 h-full'>
-        <div className='flex h-2/3'><iframe className='h-full w-full' srcDoc={iFrameCode}></iframe></div>
-        <div className='flex h-1/3'></div>
-      </div> */}
     </div>
   )
 }

@@ -7,9 +7,6 @@ interface Props {
 }
 
 const CodeArea = ({htmlCode}: Props) => {
-
-  
-  
   return (<>
     <div id="html" className='bg-neutral-600 w-full h-full rounded-lg shadow-lg shadow-neutral-600 border border-neutral-400 overflow-auto text-xs'>
       <SyntaxHighlighter language="javascript" style={atomOneLight}>

@@ -17,6 +17,10 @@ interface GlobalStore {
   toggleRounded: () => void;
   isTailwind: boolean;
   toggleIsTailwind: () => void;
+  cssCode: string;
+  setCssCode: (code: string) => void;
+  tailwindCode: string;
+  setTailwindCode: (code: string) => void;
 }
 
 const useGlobalStore = create<GlobalStore>((set, get) => ({
@@ -42,6 +46,10 @@ const useGlobalStore = create<GlobalStore>((set, get) => ({
   toggleRounded: () => set((state) => ({ rounded: !state.rounded })),
   isTailwind: false,
   toggleIsTailwind: () => set((state) => ({ isTailwind: !state.isTailwind })),
+  cssCode: '',
+  setCssCode: (code: string) => set({ cssCode: code }),
+  tailwindCode: '',
+  setTailwindCode: (code: string) => set({ tailwindCode: code }),
 }));
 
 export default useGlobalStore;
