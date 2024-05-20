@@ -10,10 +10,10 @@ import ItemsSettings from '@/sections/ItemsSettings'
 import TitleSection from '@/sections/TitleSection';
 import CodeArea from '@/sections/CodeArea';
 import LayoutArea from '@/sections/LayoutArea';
-import FooteSection from '@/sections/FooteSection'
+import FooterSection from '@/sections/FooterSection'
 
 const Home = () => {
-  const {grid, updateGrid, items, updateItem, addItem, deleteItem, decorated, rounded, isTailwind, cssCode, setCssCode, tailwindCode, setTailwindCode} = useGlobalStore()
+  const {grid, items, decorated, rounded, isTailwind, cssCode, setCssCode, tailwindCode, setTailwindCode, copied} = useGlobalStore()
   const colors: any = lightColors.items
   const [iFrameCode, setIFrameCode] = useState<string>('')
   const codeHtmlArea = isTailwind ? tailwindCode : cssCode
@@ -75,25 +75,27 @@ const Home = () => {
     
   }, [grid, items, decorated, rounded, isTailwind])
 
-  
-
-  
   return (
-    <div className='flex h-screen w-full text-black font-mplus p-8'>
-
-      <div className='flex flex-col h-full w-1/2 gap-6'>
+    <div className='flex flex-col md:flex-row h-screen w-full text-black font-mplus p-12'>
+      <div className='flex flex-col h-full w-full md:w-1/2 gap-6'>
           <TitleSection />
           <GridSettings />
           <ItemsSettings />
-          <FooteSection />
+          <FooterSection />
       </div>
 
-      <div className='flex flex-col h-full w-1/2 gap-4'>
+      <div className='flex flex-col h-full w-full md:w-1/2 gap-4 pb-10 md:pb-0'>
         <div className='flex flex-col h-1/2'>
           <LayoutArea iFrameCode={iFrameCode} />
         </div>
         <div className='flex h-1/2 px-4'>
           <CodeArea htmlCode={codeHtmlArea}/>
+        </div>
+      </div>
+
+      <div className={`toast toast-end transition-all ease-in-out duration-300 ${copied ? '' : 'hidden'}`}>
+        <div className="alert alert-info">
+          <span className='text-white'>Code copied to clipboard!</span>
         </div>
       </div>
     </div>

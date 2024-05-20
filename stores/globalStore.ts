@@ -21,6 +21,8 @@ interface GlobalStore {
   setCssCode: (code: string) => void;
   tailwindCode: string;
   setTailwindCode: (code: string) => void;
+  copied: boolean;
+  toggleCopied: () => void;
 }
 
 const useGlobalStore = create<GlobalStore>((set, get) => ({
@@ -50,6 +52,8 @@ const useGlobalStore = create<GlobalStore>((set, get) => ({
   setCssCode: (code: string) => set({ cssCode: code }),
   tailwindCode: '',
   setTailwindCode: (code: string) => set({ tailwindCode: code }),
+  copied: false,
+  toggleCopied: () => set((state) => ({ copied: !state.copied })),
 }));
 
 export default useGlobalStore;

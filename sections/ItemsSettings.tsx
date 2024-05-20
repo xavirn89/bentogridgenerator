@@ -45,8 +45,8 @@ const ItemsSettings = ({ }: Props) => {
   }
 
   return (
-    <div className='flex flex-col  flex-grow gap-6'>
-      <div className='flex justify-end gap-2'>
+    <div className='flex flex-col flex-grow gap-6'>
+      <div className='flex justify-start gap-2'>
         
         <button
           onClick={handleRemoveGridItem}

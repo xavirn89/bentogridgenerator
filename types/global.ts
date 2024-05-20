@@ -16,3 +16,10 @@ export enum GridItemValueType {
   BGCOLOR = 'bgColor',
   TEXT = 'text'
 }
+
+export enum Direction {
+  TOP = 'top',
+  BOTTOM = 'bottom',
+  LEFT = 'left',
+  RIGHT = 'right'
+}
