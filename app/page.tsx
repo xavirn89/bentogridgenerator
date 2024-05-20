@@ -8,9 +8,15 @@ import { createHtml } from '@/utils/parsers'
 import GridSettings from '@/sections/GridSettings'
 
 const Home = () => {
-  const {grid, updateGrid, items, updateItem} = useGlobalStore()
+  const {grid, updateGrid, items, updateItem, addItem, deleteItem} = useGlobalStore()
   const [rounded, setRounded] = useState<boolean>(true)
   const colors: any = lightColors.items
+
+  const [rangeValue, setRangeValue] = useState<number>(25)
+  const handleRangeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = Math.round(parseInt(e.target.value) / 25) * 25
+    setRangeValue(value)
+  }
 
   useEffect(() => {
     const itemsHTML: string = items.map((item) => {
@@ -54,12 +60,46 @@ const Home = () => {
     updateGrid(newGrid)
   }
 
+  const handleAddGridItem = () => {
+    const newItem: GridItem = {
+      id: items.length + 1,
+      text: '',
+      bgColor: '',
+      value: {
+        colSpan: 1,
+        rowSpan: 1
+      }
+    }
+    addItem(newItem)
+  }
+
+  const handleRemoveGridItem = () => {
+    if (items.length > 0) {
+      deleteItem(items[items.length - 1].id)
+    }
+  }
+
   return (
-    <div className='flex h-screen w-full bg-white text-black font-mplus'>
+    <div className='flex h-screen w-full  text-black font-mplus'>
       <div className='flex flex-col w-2/6 h-full'>
         <div className='flex flex-col flex-grow border-b border-gray-400 p-2 gap-4'>
           
           <GridSettings grid={grid} handleChangeGridValue={handleChangeGridValue} />
+          <div className='flex justify-end gap-2'>
+            <button 
+              onClick={handleAddGridItem} 
+              className='bg-blue-500 text-white px-4 py-1 rounded-lg font-medium text-xs'
+            >
+              Add Item
+            </button>
+            {/* add remove button */}
+            <button
+              onClick={handleRemoveGridItem}
+              className='bg-red-500 text-white px-4 py-1 rounded-lg font-medium text-xs'
+            >
+              Remove Item
+            </button>
+          </div>
           <div className='flex flex-wrap gap-4'>
             {items.map((item, index) => (
               <div 
@@ -90,6 +130,23 @@ const Home = () => {
                 </div>
               </div>
             ))}
+            
+          </div>
+          <input 
+            type="range" 
+            min={0} 
+            max="100" 
+            value={rangeValue} 
+            onChange={handleRangeChange}
+            className="range accent-blue-500"
+            step="25" 
+          />
+          <div className="w-full flex justify-between text-xs px-2">
+            <span>|</span>
+            <span>|</span>
+            <span>|</span>
+            <span>|</span>
+            <span>|</span>
           </div>
 
         </div>

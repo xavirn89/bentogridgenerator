@@ -19,6 +19,8 @@ const config: Config = {
       'mplus': ['"M PLUS 2 Variable"', 'sans-serif'],
     },
   },
-  plugins: [],
+  plugins: [
+    require('daisyui'),
+  ],
 };
 export default config;
