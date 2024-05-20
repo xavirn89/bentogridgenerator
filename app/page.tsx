@@ -73,7 +73,7 @@ const Home = () => {
 
 
     
-  }, [grid, items, decorated, rounded, isTailwind])
+  }, [grid, items, decorated, rounded, isTailwind, colors, setCssCode, setTailwindCode])
 
   return (
     <div className='flex flex-col md:flex-row h-screen w-full text-black font-mplus p-12'>
