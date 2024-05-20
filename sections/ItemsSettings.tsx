@@ -8,7 +8,7 @@ interface Props {
 }
 
 const ItemsSettings = ({ }: Props) => {
-  const {items, updateItem, grid} = useGlobalStore()
+  const {items, updateItem, addItem, deleteItem, grid} = useGlobalStore()
   const colors: any = lightColors.items
 
   const handleChangeItemValue = (id: number, type: GridItemValueType, value: any) => {
@@ -25,7 +25,42 @@ const ItemsSettings = ({ }: Props) => {
     }
   }
 
-  return (
+  const handleAddGridItem = () => {
+    const newItem: GridItem = {
+      id: items.length + 1,
+      text: '',
+      bgColor: '',
+      value: {
+        colSpan: 1,
+        rowSpan: 1
+      }
+    }
+    addItem(newItem)
+  }
+
+  const handleRemoveGridItem = () => {
+    if (items.length > 0) {
+      deleteItem(items[items.length - 1].id)
+    }
+  }
+
+  return (<>
+
+    <div className='flex flex-col justify-end gap-2'>
+      <button 
+        onClick={handleAddGridItem} 
+        className='bg-green-300 text-black px-4 py-1 rounded-lg font-medium text-xs border border-gray-400 shadow-sm shadow-slate-600'
+      >
+        Add Item
+      </button>
+      {/* add remove button */}
+      <button
+        onClick={handleRemoveGridItem}
+        className='bg-red-300 text-black px-4 py-1 rounded-lg font-medium text-xs border border-gray-400 shadow-sm shadow-slate-600'
+      >
+        Remove Item
+      </button>
+    </div>
     <div className='flex flex-wrap gap-1 w-full px-8 py-2 overflow-auto mb-4'>
       {items.map((item, index) => {
         const text = item.text ? item.text : colors[item.id - 1].text
@@ -67,7 +102,7 @@ const ItemsSettings = ({ }: Props) => {
 
       
     </div>
-  )
+    </>)
 }
 
 export default ItemsSettings

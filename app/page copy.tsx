@@ -1,5 +1,7 @@
 'use client'
 import useGlobalStore from '@/stores/globalStore'
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import React, { useEffect, useState } from 'react'
 import { GridItem, GridValue, GridItemValueType } from '@/types/global'
 import { lightColors } from '@/constants/global'
@@ -7,9 +9,6 @@ import { createIframeHtml, createHTML, createHTMLTailwind } from '@/utils/parser
 
 import GridSettings from '@/sections/GridSettings'
 import ItemsSettings from '@/sections/ItemsSettings'
-import TitleSection from '@/sections/TitleSection';
-import CodeArea from '@/sections/CodeArea';
-import LayoutArea from '@/sections/LayoutArea';
 
 const Home = () => {
   const {grid, updateGrid, items, updateItem, addItem, deleteItem} = useGlobalStore()
@@ -75,20 +74,10 @@ const Home = () => {
 
   
   return (
-    <div className='flex h-screen w-full text-black font-mplus p-8'>
+    <div className='flex flex-col h-screen w-full text-black font-mplus'>
 
-      <div className='flex flex-col h-full w-1/2 bg-emerald-50 gap-6'>
-          <TitleSection />
-          <GridSettings />
-      </div>
-
-      <div className='flex flex-col h-full w-1/2 gap-4'>
-        <div className='flex flex-col h-1/2'>
-          <LayoutArea iFrameCode={iFrameCode} />
-        </div>
-        <div className='flex h-1/2 px-4'>
-          <CodeArea htmlCode={htmlCode} tailwindCode={tailwindCode} />
-        </div>
+      <div>
+        Hi
       </div>
 
 
@@ -98,7 +87,7 @@ const Home = () => {
 
 
 
-      {/* <div className='flex flex-col w-5/12 h-full'>
+      <div className='flex flex-col w-5/12 h-full'>
         <div className='flex flex-col h-2/3 gap-4'>
           
           <GridSettings />
@@ -120,7 +109,7 @@ const Home = () => {
       <div className='flex flex-col w-7/12 h-full'>
         <div className='flex h-2/3'><iframe className='h-full w-full' srcDoc={iFrameCode}></iframe></div>
         <div className='flex h-1/3'></div>
-      </div> */}
+      </div>
     </div>
   )
 }
