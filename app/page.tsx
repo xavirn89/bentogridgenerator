@@ -6,6 +6,7 @@ import { lightColors } from '@/constants/global'
 import { createHtml } from '@/utils/parsers'
 
 import GridSettings from '@/sections/GridSettings'
+import ItemsSettings from '@/sections/ItemsSettings'
 
 const Home = () => {
   const {grid, updateGrid, items, updateItem, addItem, deleteItem} = useGlobalStore()
@@ -38,126 +39,25 @@ const Home = () => {
 
   const [htmlCode, setHtmlCode] = useState<string>('')
 
-  const handleChangeItemValue = (id: number, type: GridItemValueType, value: any) => {
-    const item = items.find((item) => item.id === id)
-    if (item) {
-      const newItem = {
-        ...item,
-        value: {
-          ...item.value,
-          [type]: value
-        }
-      }
-      updateItem(newItem.id, newItem)
-    }
-  }
-
-  const handleChangeGridValue = (type: GridItemValueType, value: any) => {
-    const newGrid = {
-      ...grid,
-      [type]: value
-    }
-    updateGrid(newGrid)
-  }
-
-  const handleAddGridItem = () => {
-    const newItem: GridItem = {
-      id: items.length + 1,
-      text: '',
-      bgColor: '',
-      value: {
-        colSpan: 1,
-        rowSpan: 1
-      }
-    }
-    addItem(newItem)
-  }
-
-  const handleRemoveGridItem = () => {
-    if (items.length > 0) {
-      deleteItem(items[items.length - 1].id)
-    }
-  }
-
+  
   return (
-    <div className='flex h-screen w-full  text-black font-mplus'>
-      <div className='flex flex-col w-2/6 h-full'>
-        <div className='flex flex-col flex-grow border-b border-gray-400 p-2 gap-4'>
+    <div className='flex h-screen w-full text-black font-mplus'>
+      <div className='flex flex-col w-5/12 h-full'>
+        <div className='flex flex-col h-2/3 gap-4'>
           
-          <GridSettings grid={grid} handleChangeGridValue={handleChangeGridValue} />
-          <div className='flex justify-end gap-2'>
-            <button 
-              onClick={handleAddGridItem} 
-              className='bg-blue-500 text-white px-4 py-1 rounded-lg font-medium text-xs'
-            >
-              Add Item
-            </button>
-            {/* add remove button */}
-            <button
-              onClick={handleRemoveGridItem}
-              className='bg-red-500 text-white px-4 py-1 rounded-lg font-medium text-xs'
-            >
-              Remove Item
-            </button>
-          </div>
-          <div className='flex flex-wrap gap-4'>
-            {items.map((item, index) => (
-              <div 
-                key={index} 
-                className='flex border-2 border-gray-400/50 rounded p-2 items-center' 
-                style={{ backgroundColor: item.bgColor ? item.bgColor : colors[item.id - 1].backgroundColor}}
-              >
-                <p className='text-xs font-medium text-gray-700 mb-2'>{item.text}</p>
-                <div className='flex space-x-2'>
-                  <label className='flex items-center text-xs font-medium text-gray-700'>
-                    C
-                    <input 
-                      type="number" 
-                      value={item.value.colSpan} 
-                      onChange={(e) => handleChangeItemValue(item.id, GridItemValueType.COLSPAN, parseInt(e.target.value))}
-                      className='ml-1 w-12 px-1 py-0.5 bg-white border border-gray-300 rounded focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-xs'
-                    />
-                  </label>
-                  <label className='flex items-center text-xs font-medium text-gray-700'>
-                    R
-                    <input 
-                      type="number" 
-                      value={item.value.rowSpan} 
-                      onChange={(e) => handleChangeItemValue(item.id, GridItemValueType.ROWSPAN, parseInt(e.target.value))}
-                      className='ml-1 w-12 px-1 py-0.5 bg-white border border-gray-300 rounded focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-xs'
-                    />
-                  </label>
-                </div>
-              </div>
-            ))}
-            
-          </div>
-          <input 
-            type="range" 
-            min={0} 
-            max="100" 
-            value={rangeValue} 
-            onChange={handleRangeChange}
-            className="range accent-blue-500"
-            step="25" 
-          />
-          <div className="w-full flex justify-between text-xs px-2">
-            <span>|</span>
-            <span>|</span>
-            <span>|</span>
-            <span>|</span>
-            <span>|</span>
-          </div>
+          <GridSettings />
+          
+          <ItemsSettings />
 
         </div>
 
 
-        <div className='flex flex-grow'>
-          <textarea id="html" ></textarea>
+        <div className='flex h-1/3 px-8 py-4'>
+          <textarea id="html" className='bg-neutral-600 w-full h-full rounded-lg shadow-lg shadow-neutral-800 border border-neutral-900'></textarea>
         </div>
       </div>
 
-      <div className='flex flex-col w-4/6 h-full border-l border-gray-400'>
+      <div className='flex flex-col w-7/12 h-full'>
         <iframe className='h-full w-full' srcDoc={htmlCode}></iframe>
       </div>
     </div>
