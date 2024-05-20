@@ -4,10 +4,9 @@ import { atomOneDark, atomOneLight } from 'react-syntax-highlighter/dist/esm/sty
 
 interface Props {
   htmlCode: string
-  tailwindCode: string
 }
 
-const CodeArea = ({htmlCode, tailwindCode}: Props) => {
+const CodeArea = ({htmlCode}: Props) => {
 
   
   

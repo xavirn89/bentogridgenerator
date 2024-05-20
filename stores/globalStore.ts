@@ -11,6 +11,12 @@ interface GlobalStore {
   updateItem: (id: number, item: GridItem) => void;
   deleteItem: (id: number) => void;
   updateItems: (items: GridItem[]) => void;
+  decorated: boolean;
+  toggleDecorated: () => void;
+  rounded: boolean;
+  toggleRounded: () => void;
+  isTailwind: boolean;
+  toggleIsTailwind: () => void;
 }
 
 const useGlobalStore = create<GlobalStore>((set, get) => ({
@@ -30,6 +36,12 @@ const useGlobalStore = create<GlobalStore>((set, get) => ({
   updateItem: (id: number, item: GridItem) => set((state) => ({ items: state.items.map((i) => (i.id === id ? item : i)) })),
   deleteItem: (id: number) => set((state) => ({ items: state.items.filter((i) => i.id !== id) })),
   updateItems: (items: GridItem[]) => set({ items }),
+  decorated: true,
+  toggleDecorated: () => set((state) => ({ decorated: !state.decorated })),
+  rounded: true,
+  toggleRounded: () => set((state) => ({ rounded: !state.rounded })),
+  isTailwind: false,
+  toggleIsTailwind: () => set((state) => ({ isTailwind: !state.isTailwind })),
 }));
 
 export default useGlobalStore;

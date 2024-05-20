@@ -12,22 +12,25 @@ import CodeArea from '@/sections/CodeArea';
 import LayoutArea from '@/sections/LayoutArea';
 
 const Home = () => {
-  const {grid, updateGrid, items, updateItem, addItem, deleteItem} = useGlobalStore()
+  const {grid, updateGrid, items, updateItem, addItem, deleteItem, decorated, rounded, isTailwind} = useGlobalStore()
   const colors: any = lightColors.items
   const [iFrameCode, setIFrameCode] = useState<string>('')
   const [htmlCode, setHtmlCode] = useState<string>('')
   const [tailwindCode, setTailwindCode] = useState<string>('')
 
+  const codeHtmlArea = isTailwind ? tailwindCode : htmlCode
+
   useEffect(() => {
     const iFrameHtml: string = items.map((item) => {
       const stringIndex = (item.id - 1).toString()
-      const bgColor = item.bgColor ? item.bgColor : colors[stringIndex].backgroundColor
-      const text = item.text ? item.text : colors[stringIndex].text
+      const bgColor = decorated ? colors[stringIndex].backgroundColor+";" : "lightGray;"
+      const text = decorated ? `<p>${colors[stringIndex].text}</p>` : ""
+      const borders = rounded ? "border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.1);" : ""
       return `
         <div 
-          style="font-family: 'M PLUS 2 Variable', sans-serif;grid-column: span ${item.value.colSpan}; grid-row: span ${item.value.rowSpan}; background-color: ${bgColor};  border-radius: 8px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.1);"
+          style="font-family: 'M PLUS 2 Variable', sans-serif;grid-column: span ${item.value.colSpan}; grid-row: span ${item.value.rowSpan}; background-color: ${bgColor} ${borders} display: flex; align-items: center; justify-content: center;"
         >
-          <p>${text}</p>
+          ${text}
         </div>
       `
     }).join('')
@@ -37,13 +40,15 @@ const Home = () => {
 
     const html: string = items.map((item) => {
       const stringIndex = (item.id - 1).toString()
-      const bgColor = item.bgColor ? item.bgColor : colors[stringIndex].backgroundColor
-      const text = item.text ? item.text : colors[stringIndex].text
+      const bgColor = decorated ? colors[stringIndex].backgroundColor+";" : "lightGray;"
+      const text = decorated ? `<p>${colors[stringIndex].text}</p>` : ""
+      const borders = rounded ? "border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.1);" : ""
+
       return `
         <div 
-          style="grid-column: span ${item.value.colSpan}; grid-row: span ${item.value.rowSpan}; background-color: ${bgColor}; border-radius: 8px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.1);"
+          style="grid-column: span ${item.value.colSpan}; grid-row: span ${item.value.rowSpan}; background-color: ${bgColor} ${borders} display: flex; align-items: center; justify-content: center;"
         >
-          <p>${text}</p>
+          ${text}
         </div>
       `
     }).join('')
@@ -53,13 +58,14 @@ const Home = () => {
 
     const tailwind: string = items.map((item) => {
       const stringIndex = (item.id - 1).toString()
-      const bgColor = item.bgColor ? item.bgColor : colors[stringIndex].backgroundColor
-      const text = item.text ? item.text : colors[stringIndex].text
+      const bgColor = decorated ? colors[stringIndex].backgroundColor : "bg-gray-200"
+      const text = decorated ? `<p>${colors[stringIndex].text}</p>` : ""
+      const borders = rounded ? "rounded-lg shadow-md" : ""
       return `
         <div 
-          class="col-span-${item.value.colSpan} row-span-${item.value.rowSpan} bg-${bgColor} rounded-lg flex items-center justify-center shadow-md"
+          class="col-span-${item.value.colSpan} row-span-${item.value.rowSpan} bg-${bgColor} ${borders} flex items-center justify-center"
         >
-          <p>${text}</p>
+          ${text}
         </div>
       `
     }).join('')
@@ -69,7 +75,7 @@ const Home = () => {
 
 
     
-  }, [grid, items])
+  }, [grid, items, decorated, rounded, isTailwind])
 
   
 
@@ -87,7 +93,7 @@ const Home = () => {
           <LayoutArea iFrameCode={iFrameCode} />
         </div>
         <div className='flex h-1/2 px-4'>
-          <CodeArea htmlCode={htmlCode} tailwindCode={tailwindCode} />
+          <CodeArea htmlCode={codeHtmlArea}/>
         </div>
       </div>
 
