@@ -1,11 +1,16 @@
 import React from 'react';
-import GridSettings from '@/sections/GridSettings';
-import ItemsSettings from '@/sections/ItemsSettings';
-import TitleSection from '@/sections/TitleSection';
-import CodeArea from '@/sections/CodeArea';
-import LayoutArea from '@/sections/LayoutArea';
-import FooterSection from '@/sections/FooterSection';
-import ToastArea from '@/sections/ToastArea';
+import dynamic from 'next/dynamic'
+
+// Dynamic imports for client-side components with SSR disabled
+const GridSettings = dynamic(() => import('@/sections/GridSettings'), { ssr: false })
+const ItemsSettings = dynamic(() => import('@/sections/ItemsSettings'), { ssr: false })
+const TitleSection = dynamic(() => import('@/sections/TitleSection'), { ssr: false })
+const CodeArea = dynamic(() => import('@/sections/CodeArea'), { ssr: false })
+const LayoutArea = dynamic(() => import('@/sections/LayoutArea'), { ssr: false })
+const ToastArea = dynamic(() => import('@/sections/ToastArea'), { ssr: false })
+
+// Static import for server-side component
+import FooterSection from '@/sections/FooterSection'
 
 const Home: React.FC = () => {
   
