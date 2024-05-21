@@ -12,49 +12,27 @@ Bento Grid Generator is a web tool that generates layouts in bento grid format a
 
 To get started with the Bento Grid Generator, clone the repository and install the dependencies:
 
-\`\`\`bash
-git clone https://github.com/yourusername/bentogridgenerator.git
+```bash
+git clone https://github.com/xavirn89/bentogridgenerator.git
 cd bentogridgenerator
 npm install
-\`\`\`
+```
 
 ## Usage
 
 Run the development server:
 
-\`\`\`bash
+```bash
 npm run dev
-\`\`\`
+```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-## Build
-
-To create a production build, run:
-
-\`\`\`bash
-npm run build
-\`\`\`
-
-To start the production server, run:
-
-\`\`\`bash
-npm start
-\`\`\`
-
-## Lint
-
-To lint the project, run:
-
-\`\`\`bash
-npm run lint
-\`\`\`
 
 ## Author
 
 [Xavi Ramon Nicolau]
-(https://github.com/xavirn89)
-(https://www.xavirn.com/)
+[https://github.com/xavirn89](https://github.com/xavirn89)
+[https://www.xavirn.com/](https://www.xavirn.com/)
 
 ## License
 
