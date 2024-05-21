@@ -86,7 +86,7 @@ const Home: React.FC = () => {
         <div className="flex flex-col h-1/2">
           <LayoutArea iFrameCode={iFrameCode} />
         </div>
-        <div className="flex h-1/2 px-4">
+        <div className="flex h-1/2">
           <CodeArea htmlCode={codeHtmlArea} />
         </div>
       </div>
