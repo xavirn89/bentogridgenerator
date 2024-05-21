@@ -1,19 +1,19 @@
-import React, { useState } from 'react'
+import React from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import { atomOneDark, atomOneLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import { atelierLakesideLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
-interface Props {
-  htmlCode: string
+interface CodeAreaProps {
+  htmlCode: string;
 }
 
-const CodeArea = ({htmlCode}: Props) => {
-  return (<>
-    <div id="html" className='bg-neutral-600 w-full h-full rounded-lg shadow-lg shadow-neutral-600 border border-neutral-400 overflow-auto text-xs'>
-      <SyntaxHighlighter language="javascript" style={atomOneLight}>
+const CodeArea: React.FC<CodeAreaProps> = ({ htmlCode }) => {
+  return (
+    <div id="html" className="w-full h-full rounded-lg shadow-lg shadow-neutral-600 border border-neutral-400 overflow-auto text-xs">
+      <SyntaxHighlighter language="html" style={atelierLakesideLight}>
         {htmlCode}
       </SyntaxHighlighter>
     </div>
-  </>)
-}
+  );
+};
 
-export default CodeArea
+export default CodeArea;

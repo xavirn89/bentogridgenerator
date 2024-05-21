@@ -23,3 +23,10 @@ export enum Direction {
   LEFT = 'left',
   RIGHT = 'right'
 }
+
+export type ItemValues = {
+  id: number;
+  text: string;
+  backgroundColor: string;
+  tailwindBackgroundColor: string;
+}

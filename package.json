@@ -1,7 +1,7 @@
 {
   "name": "bentogridgenerator",
-  "version": "1.0.0",
-  "private": true,
+  "version": "1.0.1",
+  "private": false,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -13,6 +13,7 @@
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
+    "react-helmet": "^6.1.0",
     "react-simple-debounce": "^1.0.3",
     "react-syntax-highlighter": "^15.5.0",
     "zustand": "^4.5.2"
@@ -21,6 +22,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/react-helmet": "^6.1.11",
     "@types/react-syntax-highlighter": "^15.5.13",
     "daisyui": "^4.11.1",
     "eslint": "^8",

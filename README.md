@@ -50,17 +50,11 @@ To lint the project, run:
 npm run lint
 \`\`\`
 
-## Technologies Used
-
-- [Next.js](https://nextjs.org/)
-- [React](https://reactjs.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Zustand](https://zustand-demo.pmnd.rs/)
-- [DaisyUI](https://daisyui.com/)
-
 ## Author
 
-[Xavi Ramon Nicolau](https://www.xavirn.com/)
+[Xavi Ramon Nicolau]
+(https://github.com/xavirn89)
+(https://www.xavirn.com/)
 
 ## License
 
