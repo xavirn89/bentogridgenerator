@@ -7,7 +7,7 @@ interface Props {
 const LayoutArea = ({iFrameCode}: Props) => {
   return (
     <div className='flex flex-col h-full w-full'>
-      <iframe className='h-full w-full' srcDoc={iFrameCode}></iframe>
+      <iframe title="Bento Grid Layour iframe" className='h-full w-full' srcDoc={iFrameCode}></iframe>
     </div>
   )
 }

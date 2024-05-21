@@ -25,6 +25,7 @@ const ClickButton = ({ icon, color, onClick = () => {}, url, tooltipDirection, t
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       {...(tooltipText && { 'data-tip': tooltipText })}
+      aria-label="Clickable Button"
       >
         {icon}
       </a>
@@ -42,6 +43,7 @@ const ClickButton = ({ icon, color, onClick = () => {}, url, tooltipDirection, t
     onMouseEnter={() => setIsHovered(true)}
     onMouseLeave={() => setIsHovered(false)}
     {...(tooltipText && { 'data-tip': tooltipText })}
+    aria-label="Clickable Button"
     >
       {icon}
     </button>

@@ -51,7 +51,8 @@ const GridSettings = ({ }: Props) => {
             value={grid.colSpan} 
             min="1" 
             max="10" 
-            onChange={(e) => handleRangeChange(e, GridItemValueType.COLSPAN)} 
+            onChange={(e) => handleRangeChange(e, GridItemValueType.COLSPAN)}
+            aria-label="colSpan range input"
           />
           <input 
             className="range range-xs range-success" 
@@ -59,7 +60,8 @@ const GridSettings = ({ }: Props) => {
             value={grid.rowSpan} 
             min="1" 
             max="10" 
-            onChange={(e) => handleRangeChange(e, GridItemValueType.ROWSPAN)} 
+            onChange={(e) => handleRangeChange(e, GridItemValueType.ROWSPAN)}
+            aria-label="rowSpan range input"
           />
         </div>
       </div>

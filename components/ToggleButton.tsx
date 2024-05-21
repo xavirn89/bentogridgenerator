@@ -33,6 +33,7 @@ const ToggleButton = ({ flag, icon, colorOn, colorOff, onToggle, disabledOnToggl
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       {...(tooltipText && { 'data-tip': tooltipText })}
+      aria-label="Toggle Button"
       >
       {icon}
     </button>

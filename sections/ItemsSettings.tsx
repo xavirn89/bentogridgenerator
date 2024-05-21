@@ -87,6 +87,7 @@ const ItemsSettings = ({ }: Props) => {
                   max={grid.colSpan} 
                   value={item.value.colSpan} 
                   onChange={(e) => handleChangeItemValue(item.id, GridItemValueType.COLSPAN, parseInt(e.target.value))}
+                  aria-label="colSpan range input"
                 />
                 <input 
                   type='range'
@@ -95,6 +96,7 @@ const ItemsSettings = ({ }: Props) => {
                   max={grid.rowSpan} 
                   value={item.value.rowSpan} 
                   onChange={(e) => handleChangeItemValue(item.id, GridItemValueType.ROWSPAN, parseInt(e.target.value))}
+                  aria-label="rowSpan range input"
                 />
               </div>
             </div>
