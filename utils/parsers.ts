@@ -51,20 +51,20 @@ export const createIframeHtml = (grid: GridValue, items = "") => {
   `
 }
 
-export const createHTML = (grid: GridValue, items = "") => {
+export const createHTML = (grid: GridValue, items = "", decorated: boolean = true, rounded: boolean = true) => {
   return `
   <div class="container" style="display: flex; height: 100%; width: 100%; align-items: center; justify-content: center;">
-    <div class="grid" style="display: grid; height: 100%; width: 100%; grid-template-columns: repeat(${grid.colSpan}, 1fr); grid-template-rows: repeat(${grid.rowSpan}, 1fr); gap: 16px; background-color: #eee; padding: 8px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.1);">
+    <div class="grid" style="display: grid; height: 100%; width: 100%; grid-template-columns: repeat(${grid.colSpan}, 1fr); grid-template-rows: repeat(${grid.rowSpan}, 1fr); gap: 16px; ${decorated ? 'background-color: #eee;' : ''} padding: 8px; ${rounded ? 'border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.1);' : ''}">
     ${items}
     </div>
   </div>
   `
 }
 
-export const createHTMLTailwind = (grid: GridValue, items = "") => {
+export const createHTMLTailwind = (grid: GridValue, items = "", decorated: boolean = true, rounded: boolean = true) => {
   return `
   <div className="flex h-full w-full items-center justify-center">
-    <div className="grid h-full w-full gap-4 bg-gray-200 p-2 rounded-lg shadow-md grid-cols-${grid.colSpan} grid-rows-${grid.rowSpan}">
+    <div className="grid h-full w-full gap-4 ${decorated ? 'bg-gray-200' : ''} p-2 grid-cols-${grid.colSpan} grid-rows-${grid.rowSpan} ${rounded ? 'rounded-lg shadow-md' : ''}">
     ${items}
     </div>
   </div>

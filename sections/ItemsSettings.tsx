@@ -1,5 +1,7 @@
+'use client'
+
 import React, { useCallback } from 'react';
-import { GridValue, GridItemValueType, GridItem, ItemValues } from '@/types/global';
+import { GridItemValueType, GridItem, ItemValues } from '@/types/global';
 import { lightColors } from '@/constants/colors';
 import useGlobalStore from '@/stores/globalStore';
 

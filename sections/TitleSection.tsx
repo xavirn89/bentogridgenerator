@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react';
 import useGlobalStore from '@/stores/globalStore';
 import ClickButton from '@/components/ClickButton';

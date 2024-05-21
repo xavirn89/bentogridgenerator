@@ -1,3 +1,5 @@
+'use client'
+
 import { Direction } from '@/types/global'
 import React, { useState } from 'react'
 
