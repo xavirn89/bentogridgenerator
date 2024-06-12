@@ -1,0 +1,13 @@
+# *
+User-agent: *
+Allow: /
+
+# *
+User-agent: *
+Disallow: /admin
+
+# Host
+Host: https://www.bentogridgenerator.com
+
+# Sitemaps
+Sitemap: https://www.bentogridgenerator.com/sitemap.xml
