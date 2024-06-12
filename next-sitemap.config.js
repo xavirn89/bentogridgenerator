@@ -9,8 +9,5 @@ module.exports = {
       { userAgent: '*', allow: '/' },
       { userAgent: '*', disallow: '/admin' },
     ],
-    additionalSitemaps: [
-      'https://www.bentogridgenerator.com/sitemap.xml',
-    ],
   },
 };
