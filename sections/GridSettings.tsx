@@ -1,5 +1,4 @@
 'use client'
-
 import React, { useCallback } from 'react';
 import { GridItemValueType, Direction } from '@/types/global';
 import useGlobalStore from '@/stores/globalStore';

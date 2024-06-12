@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import Head from 'next/head';
 import "./globals.css";
 import '@fontsource-variable/m-plus-2';
-import { Helmet } from 'react-helmet';
 
 import { Author } from "next/dist/lib/metadata/types/metadata-types";
 

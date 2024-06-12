@@ -1,5 +1,4 @@
 'use client'
-
 import useGlobalStore from '@/stores/globalStore';
 import React from 'react'
 

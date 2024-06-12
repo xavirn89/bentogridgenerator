@@ -1,5 +1,4 @@
 'use client'
-
 import React, { useEffect } from 'react'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { atelierLakesideLight } from 'react-syntax-highlighter/dist/esm/styles/hljs'
